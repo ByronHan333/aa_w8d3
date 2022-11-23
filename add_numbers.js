@@ -12,15 +12,15 @@ const completionCallback = (sum) => {
 const addNumbers = (sum, numsLeft, completionCallback) => {
     if (numsLeft === 0) {
         completionCallback(sum);
+        rl.close();
     } else {
         rl.question ("Enter a number.", num => {
             num = parseInt(num);
             sum += num;
             numsLeft--;
             console.log(`Current Sum: ${sum}`);
-            rl.close();
+            addNumbers (sum, numsLeft, completionCallback);
         });
-        addNumbers (sum, numsLeft, completionCallback);
     }
 }
 
